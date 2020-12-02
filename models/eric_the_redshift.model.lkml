@@ -5,7 +5,6 @@ include: "/views/**/*.view"
 
 datagroup: eric_the_redshift_default_datagroup {
   sql_trigger: SELECT DATE_TRUNC('w', DATEADD(hour,8,GETDATE()));;
-  max_cache_age: "1 hour"
 }
 
 persist_with: eric_the_redshift_default_datagroup
