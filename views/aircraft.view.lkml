@@ -19,7 +19,10 @@ view: aircraft {
       week,
       month,
       quarter,
-      year
+      year,
+      hour_of_day,
+      day_of_week,
+      hour
     ]
     convert_tz: no
     datatype: date
@@ -59,7 +62,9 @@ view: aircraft {
       week,
       month,
       quarter,
-      year
+      hour,
+      year,
+      hour_of_day
     ]
     convert_tz: no
     datatype: date
@@ -100,6 +105,8 @@ view: aircraft {
       week,
       month,
       quarter,
+      hour_of_day,
+      hour,
       year
     ]
     convert_tz: no

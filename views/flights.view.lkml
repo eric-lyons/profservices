@@ -21,6 +21,7 @@ view: flights {
   }
 
   dimension: cancelled {
+    label: "{{ _user_attributes['my_cat'] }}"
     type: string
     sql: ${TABLE}.cancelled ;;
   }
@@ -81,7 +82,7 @@ view: flights {
 
   dimension: origin {
     type: string
-    sql: ${TABLE}.origin ;;
+    sql: concat(' ', ${TABLE}.origin) ;;
   }
 
   dimension: tail_num {
