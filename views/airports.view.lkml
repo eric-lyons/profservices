@@ -99,7 +99,7 @@ view: airports {
     link: {
       label: "Drill Dashboard"
       url: "/dashboards/dashboards-next/3791?Created+Year=2019&Gender=&Date+Granularity=Day&BREAK=1"
-    }
+    }#
   }
 
   dimension: joint_use {
