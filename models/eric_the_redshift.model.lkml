@@ -7,6 +7,8 @@ datagroup: eric_the_redshift_default_datagroup {
   sql_trigger: SELECT DATE_TRUNC('w', DATEADD(hour,8,GETDATE()));;
 }
 
+### TEST
+
 persist_with: eric_the_redshift_default_datagroup
 
 explore: accidents {}
