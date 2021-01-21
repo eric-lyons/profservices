@@ -143,6 +143,12 @@ view: accidents {
     sql: ${TABLE}.number_of_uninjured ;;
   }
 
+measure: dimension {
+    type: date
+    convert_tz: no
+    sql: MAX((SELECT ${TABLE}.event_date FROM UNION SELECT ${TABLE}.publication_date FROM ${accidents.SQL_TABLE_NAME} LIMIT 1));;
+  }
+
   dimension_group: publication {
     type: time
     timeframes: [
@@ -155,6 +161,16 @@ view: accidents {
       year
     ]
     sql: ${TABLE}.publication_date ;;
+  }
+
+  dimension: greatest_dim {
+    type: date
+    sql: GREATEST(${publication_date}, ${event_date}) ;;
+  }
+
+  measure: greater_greatest {
+    type: date
+    sql: MAX(${greatest_dim});;
   }
 
   dimension: purpose_of_flight {
