@@ -3,6 +3,7 @@ connection: "faa_redshift"
 # include all the views
 include: "/views/**/*.view"
 ## First Commit
+### Second
 
 
 datagroup: eric_the_redshift_default_datagroup {
