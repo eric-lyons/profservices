@@ -2,6 +2,8 @@ connection: "faa_redshift"
 
 # include all the views
 include: "/views/**/*.view"
+## First Commit
+
 
 datagroup: eric_the_redshift_default_datagroup {
   sql_trigger: SELECT DATE_TRUNC('w', DATEADD(hour,8,GETDATE()));;
