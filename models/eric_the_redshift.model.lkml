@@ -3,9 +3,6 @@ connection: "faa_redshift"
 # include all the views
 include: "/views/**/*.view"
 
-### FIRST
-### SECOND
-
 
 
 

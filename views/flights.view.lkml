@@ -100,6 +100,11 @@ view: flights {
     sql: ${TABLE}.taxi_out ;;
   }
 
+  measure: total_distance {
+    type: sum
+    sql: ${distance} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []

@@ -63,6 +63,8 @@ view: accidents {
     type: time
     timeframes: [
       raw,
+      day_of_month,
+      month_name,
       time,
       date,
       week,
@@ -186,6 +188,11 @@ measure: dimension {
   dimension: report_status {
     type: string
     sql: ${TABLE}.report_status ;;
+  }
+
+  measure: total_events {
+    type: count_distinct
+    sql: ${accident_number} ;;
   }
 
   dimension: schedule {

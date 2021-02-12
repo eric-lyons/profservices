@@ -110,6 +110,19 @@ view: airports {
   dimension: latitude {
     type: number
     sql: ${TABLE}.latitude ;;
+    html:
+    {% if value > 0 %}
+    <font color="#4281c3"> {{ rendered_value }}
+    <i style="font-size: 70%;" class="fa fa-tachometer"></i>
+    </font>
+    {% else %}
+    <font color="#4281c3">
+    <i style="font-size: 70%;" class="fa fa-tachometer"></i>
+    </font>
+    {% endif %}
+    ;;
+
+
   }
 
   dimension: longitude {
