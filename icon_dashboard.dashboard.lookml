@@ -2,7 +2,7 @@
   title: icon dash
   layout: newspaper
   preferred_viewer: dashboards-next
-  crossfilter_enabled: true
+  crossfilter_enabled: false
   elements:
   - title: ''
     name: ''
@@ -11,7 +11,7 @@
     type: single_value
     fields: [airports.full_name]
     limit: 500
-    custom_color_enabled: true
+    custom_color_enabled: false
     show_single_value_title: false
     show_comparison: false
     comparison_type: value
@@ -20,7 +20,6 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    series_types: {}
     defaults_version: 1
     listen:
       County: airports.county

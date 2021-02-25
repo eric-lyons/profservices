@@ -41,6 +41,7 @@ view: accidents {
   dimension: amateur_built {
     type: string
     sql: ${TABLE}.amateur_built ;;
+    drill_fields: [country,broad_phase_of_flight]
   }
 
   dimension: broad_phase_of_flight {
