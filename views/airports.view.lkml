@@ -169,6 +169,20 @@ view: airports {
     sql: ${TABLE}.site_number ;;
   }
 
+  parameter: state_param {
+    type: string
+  }
+
+  dimension: teset {
+    sql: REPLACE({% parameter state_param %},' ', '\, ') ;;
+    type: string
+  }
+
+  dimension: yesno {
+    type: yesno
+    sql: ${state} IN (REPLACE({% parameter state_param %},' ', '\, ')) ;;
+  }
+
   dimension: state {
     type: string
     sql: ${TABLE}.state ;;
