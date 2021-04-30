@@ -4,7 +4,7 @@ connection: "faa_redshift"
 include: "/views/**/*"
 include: "/**/*.dashboard"
 
-
+#save
 
 
 explore: derived_table_filters {}
@@ -15,6 +15,7 @@ datagroup: eric_the_redshift_default_datagroup {
 
 explore: a {}
 
+explore: ARRAY {}
 explore: finalc {}
 
 ### TEST
