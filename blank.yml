@@ -1,1 +1,56 @@
+# name: Pending Renewals and Expirations - AUGUST 2021
+# climate_only: false
+# sample_size: 3
+# sample_email_recipients: Zach.scaturro@climate.com
+# worklist: file://pending-renewals-seller-2021-07-07-worklist.yml
+# worklist_format: csv
+# attachments:
+# attachments:
+# - name: Pending Fieldview Customer Renewals
+# key: https://looker.production.tcc.services/dashboards/766
+# type: dashboard
+# format: png
+# filters:
+# - Dealer Email={{ email }}
+# height: 1518
+# width: 1716
+# - name: Pending Fieldview Customer Renewals - Detail
+# key: https://looker.production.tcc.services/explore/Sales_Model/daily_sales_temporal_snapshot?qid=QOtMRgfBelYxhx2b3bI1b2
+# type: query
+# format: csv
+# filters:
+# - d_dealer.dealer_email={{ email }}
+# limit: 10000
+# images:
+# - climate-fieldview-header.png
+# email:
+# from: fieldviewinsights@climate.com
+# bcc: Zach.scaturro@climate.com, customersuccess@climate.com
+# subject: Pending Renewals/Expirations
+# body: >
+# <h1 align="center"><img src="cid:climate-fieldview-header.png" alt="Climate FieldView" height="300" width="800"></h1>
 
+# <p>Dear {{dealer_first_name}},</p>
+
+# <p>
+# Did you know you might have FieldView customers who have subscriptions expiring next month? To ensure you are getting the most out of being a FieldView dealer and to help your customers remain on the FieldView platform, we are providing you with your list of customers who are expiring soon. In addition, your customers have options to renew and get a free year of FieldView Plus by taking advantage of the following programs.</p>
+
+# <b>Bayer PLUS Rewards</b>
+# <li>All your customers need to do is sign up for Bayer PLUS Rewards <a href="https://www.cropscience.bayer.us/registration/createaccount?bayerplus=1">here</a>, and then claim their free year of FieldView Plus.</p>
+
+
+# <b>Seed Loyalty</b>
+# <li>Resources <a href="https://docs.google.com/presentation/d/1ciY-8Ldk-GxG-DKmDcCC61mEIPbUR29w-LQDWS7zLZA/edit#slide=id.g81a1194da4_0_53">here</a></p>
+
+# <li>PLEASE NOTE - If you have already entered the customers Seed Loyalty Tech ID in Dealer Portal and they are in auto-renew, they will be automatically renewed on their expiration date. These customers may still be on the provided list. <p>
+
+# <p>Thank you for your continued support,</p>
+# <p>The Climate FieldView Team</p>
+# <p><center><b>FIELDVIEW SUPPORT INFORMATION</b></p>
+
+# <p><center>Sometimes it is easier to talk through your questions. We understand, so please feel free to email, web chat or call us anytime.</p>
+
+# <p><center><b>PHONE</b> 1-888-924-7475 - <b>EMAIL</b> <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=cit@climate.com&su=Report+Issue&tf=1">support@climate.com </a> - <b>WEB</b> <a href="https://www.climate.com">Climate.com</a>
+
+# <p><b>HOURS</b> Monday through Friday 7:00am - 6:00pm (cst)</p>
+# <p><center>Climate FieldView <a href="https://support.climate.com/kt#/en_US">Knowledge Center</a>
