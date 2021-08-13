@@ -41,6 +41,7 @@ view: accidents {
   dimension: amateur_built {
     type: string
     sql: ${TABLE}.amateur_built ;;
+    drill_fields: [country,broad_phase_of_flight]
   }
 
   dimension: broad_phase_of_flight {
@@ -63,6 +64,8 @@ view: accidents {
     type: time
     timeframes: [
       raw,
+      day_of_month,
+      month_name,
       time,
       date,
       week,
@@ -186,6 +189,11 @@ measure: dimension {
   dimension: report_status {
     type: string
     sql: ${TABLE}.report_status ;;
+  }
+
+  measure: total_events {
+    type: count_distinct
+    sql: ${accident_number} ;;
   }
 
   dimension: schedule {

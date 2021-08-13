@@ -33,6 +33,30 @@ view: airports {
     sql: ${TABLE}.cbd_dist ;;
   }
 
+  filter: is_above_1000 {
+    type: yesno
+  }
+
+  filter: is_in_houston {
+    type: yesno
+  }
+
+  dimension: yesno_elevation {
+    type: yesno
+    sql: ${elevation} > 1000 ;;
+  }
+
+  dimension: in_Houston {
+    type: yesno
+    sql: ${city} = 'HOUSTON' ;;
+  }
+
+  parameter: AND_OR {
+    type: unquoted
+    allowed_value: {value: "AND" label:"AND"}
+    allowed_value: { value:"OR" label:"AND"}
+  }
+
   dimension: cert {
     type: string
     sql: ${TABLE}.cert ;;
@@ -65,7 +89,14 @@ view: airports {
 
   dimension: elevation {
     type: number
-    sql: ${TABLE}.elevation ;;
+    sql: ${TABLE}.elevation + 1.12345678 ;;
+    value_format: "0.00"
+  }
+
+  measure: average_Elev {
+    type: average
+    sql: ${elevation} + 10.12345678 ;;
+    ##value_format: "decimal_0"
   }
 
   dimension: faa_dist {
@@ -110,7 +141,34 @@ view: airports {
   dimension: latitude {
     type: number
     sql: ${TABLE}.latitude ;;
+
+    html:
+    <font color="#4281c3">{{ rendered_value }}
+    <i style="font-size: 70%;" class="fa fa-tachometer"></i>
+    </font>
+    ;;
+
+
   }
+
+  dimension: location {
+    type: location
+    sql_latitude: ${latitude} ;;
+    sql_longitude: ${longitude} ;;
+  }
+
+  dimension: location_two {
+    type: location
+    sql_latitude: ${latitude}/2 ;;
+    sql_longitude: ${longitude}/2 ;;
+  }
+
+  dimension: distance {
+    type: distance
+    start_location_field: airports.location
+    end_location_field: airports.location_two
+  }
+
 
   dimension: longitude {
     type: number
@@ -135,6 +193,20 @@ view: airports {
   dimension: site_number {
     type: string
     sql: ${TABLE}.site_number ;;
+  }
+
+  parameter: state_param {
+    type: string
+  }
+
+  dimension: teset {
+    sql: REPLACE({% parameter state_param %},' ', '\, ') ;;
+    type: string
+  }
+
+  dimension: yesno {
+    type: yesno
+    sql: ${state} IN (REPLACE({% parameter state_param %},' ', '\, ')) ;;
   }
 
   dimension: state {

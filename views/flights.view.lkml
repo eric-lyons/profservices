@@ -18,6 +18,7 @@ view: flights {
       year
     ]
     sql: ${TABLE}.arr_time ;;
+    html: {{ rendered_value | date: "%b %d, %y" }} ;;
   }
 
   dimension: cancelled {
@@ -95,9 +96,20 @@ view: flights {
     sql: ${TABLE}.taxi_in ;;
   }
 
+  dimension: created_week_ending_sunday {
+    type: date_week
+    sql: DATEADD(day, 7, ${arr_date});;
+    datatype: date
+  }
+
   dimension: taxi_out {
     type: number
     sql: ${TABLE}.taxi_out ;;
+  }
+
+  measure: total_distance {
+    type: sum
+    sql: ${distance} ;;
   }
 
   measure: count {
