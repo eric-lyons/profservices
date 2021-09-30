@@ -13,6 +13,8 @@ datagroup: eric_the_redshift_default_datagroup {
   sql_trigger: SELECT DATE_TRUNC('w', DATEADD(hour,8,GETDATE()));;
 }
 
+explore: DT_TEST_ARRAY {}
+
 explore: a {}
 
 explore: ARRAY {}
@@ -20,6 +22,7 @@ explore: finalc {}
 
 ### TEST
 
+explore: test_dt {}
 persist_with: eric_the_redshift_default_datagroup
 
 explore: accidents {}
