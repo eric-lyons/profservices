@@ -22,6 +22,7 @@ explore: finalc {}
 
 ### TEST
 
+explore: test_dt {}
 persist_with: eric_the_redshift_default_datagroup
 
 explore: accidents {}
