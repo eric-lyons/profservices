@@ -8,6 +8,7 @@ view: not_ndt {
   #   type: number
   #   sql: ${TABLE}.user_id ;;
   # }
+  # hello world
   #
   # dimension: lifetime_orders {
   #   description: "The total number of orders for each user"
