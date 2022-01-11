@@ -7,6 +7,7 @@ view: not_ndt {
   #   description: "Unique ID for each user that has ordered"
   #   type: number
   #   sql: ${TABLE}.user_id ;;
+  #Hello world
   # }
   # hello world
   #
