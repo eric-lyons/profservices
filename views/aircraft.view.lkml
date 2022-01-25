@@ -27,7 +27,8 @@ view: aircraft {
       hour_of_day,
       day_of_week,
       month_num,
-      hour
+      hour,
+      time
     ]
     convert_tz: no
     datatype: date
@@ -181,6 +182,12 @@ view: aircraft {
   dimension: year_built {
     type: number
     sql: ${TABLE}.year_built ;;
+  }
+
+  dimension: pk {
+    type: string
+    primary_key: yes
+    sql: ${air_worth_time} || ${tail_num};;
   }
 
   dimension: zip {

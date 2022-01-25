@@ -155,6 +155,7 @@ view: airports {
     type: location
     sql_latitude: ${latitude} ;;
     sql_longitude: ${longitude} ;;
+    html:  <div>"Fullname" {{airports.full_name.rendered_value}}</div> ;;
   }
 
   dimension: location_two {
@@ -217,5 +218,6 @@ view: airports {
   measure: count {
     type: count
     drill_fields: [id, full_name]
+   # html: <div>"Fullname" {{airports.full_name.rendered_value}}</div> ;;
   }
 }

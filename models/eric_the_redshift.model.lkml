@@ -6,6 +6,14 @@ include: "/**/*.dashboard"
 
 #save
 
+explore: aircraft {
+  join: flights {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${aircraft.tail_num} = ${flights.tail_num} ;;
+  }
+}
+
 
 explore: derived_table_filters {}
 
@@ -59,7 +67,6 @@ explore: +accidents {
   }
 }
 
-explore: aircraft {}
 
 explore: dt_one {}
 
