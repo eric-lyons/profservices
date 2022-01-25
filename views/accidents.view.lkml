@@ -87,7 +87,7 @@ view: accidents {
     type: number
     sql: ${TABLE}.id ;;
   }
-
+#test
   dimension: accident_number {
     type: string
     sql: ${TABLE}.accident_number ;;
