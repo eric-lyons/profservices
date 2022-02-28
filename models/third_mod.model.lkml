@@ -1,4 +1,4 @@
-connection: "faa_redshift"
+connection: "faa_redshift_22822"
 
 include: "/views/*.view.lkml"
 
