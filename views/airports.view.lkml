@@ -89,7 +89,14 @@ view: airports {
 
   dimension: elevation {
     type: number
-    sql: ${TABLE}.elevation ;;
+    sql: ${TABLE}.elevation + 1.12345678 ;;
+    value_format: "0.00"
+  }
+
+  measure: average_Elev {
+    type: average
+    sql: ${elevation} + 10.12345678 ;;
+    ##value_format: "decimal_0"
   }
 
   dimension: faa_dist {
@@ -143,6 +150,25 @@ view: airports {
 
 
   }
+
+  dimension: location {
+    type: location
+    sql_latitude: ${latitude} ;;
+    sql_longitude: ${longitude} ;;
+  }
+
+  dimension: location_two {
+    type: location
+    sql_latitude: ${latitude}/2 ;;
+    sql_longitude: ${longitude}/2 ;;
+  }
+
+  dimension: distance {
+    type: distance
+    start_location_field: airports.location
+    end_location_field: airports.location_two
+  }
+
 
   dimension: longitude {
     type: number

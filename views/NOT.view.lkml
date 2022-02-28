@@ -1,6 +1,6 @@
 # If necessary, uncomment the line below to include explore_source.
 # include: "eric_the_redshift.model.lkml"
-
+# hello world
 view: NDT {
   derived_table: {
     persist_for: "24 hours"

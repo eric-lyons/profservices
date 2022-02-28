@@ -11,6 +11,10 @@ view: aircraft {
     sql: ${TABLE}.address2 ;;
   }
 
+  dimension: NULLSTRING {
+    type: string
+    sql: 'NULL';;
+  }
   dimension_group: air_worth {
     type: time
     timeframes: [
@@ -22,12 +26,37 @@ view: aircraft {
       year,
       hour_of_day,
       day_of_week,
+      month_num,
       hour
     ]
     convert_tz: no
     datatype: date
     sql: ${TABLE}.air_worth_date ;;
   }
+
+  dimension: month_num {
+    type: number
+    sql: nvl(${air_worth_month_num},0) ;;
+  }
+
+  measure: 75th_percentile {
+    type: percentile
+    percentile: 75
+    sql: ${month_num} ;;
+  }
+
+  measure: 50th_percentile {
+    type: percentile
+    percentile: 50
+    sql: ${month_num} ;;
+  }
+
+  measure: 60th_percentile {
+    type: percentile
+    percentile: 60
+    sql: ${month_num} ;;
+  }
+
 
   dimension: aircraft_engine_code {
     type: string
@@ -131,7 +160,7 @@ view: aircraft {
 
   dimension: registrant_type_id {
     type: number
-    sql: ${TABLE}.registrant_type_id ;;
+    sql: ${TABLE}.registrant_type_id* 1.0000000 ;;
   }
 
   dimension: state {
@@ -146,7 +175,7 @@ view: aircraft {
 
   dimension: tail_num {
     type: string
-    sql: ${TABLE}.tail_num ;;
+    sql: ${TABLE}.tail_num  ;;
   }
 
   dimension: year_built {
