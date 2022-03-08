@@ -6,6 +6,6 @@
 <<<<<<< HEAD
 =======
 #hi
-#hi again
+#hi againTh
 # This is BAD
 >>>>>>> branch 'master' of git@github.com:eric-lyons/red_eric_lookml.git
