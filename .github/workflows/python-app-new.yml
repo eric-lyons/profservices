@@ -24,6 +24,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install looker_sdk
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: print branch name
+    - name: run script
       run: |
-       echo "${{ github.ref_name }}"
+        echo "${{ github.head_ref }}"
+        python validate.py --project_name eric_the_redshift --dev True --branch ${{ github.head_ref }} 
+ 
