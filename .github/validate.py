@@ -26,7 +26,7 @@ def initialize(dev):
     RETURNS: SDK session/token
     """
 
-    sdk = looker_sdk.init40()
+    sdk = looker_sdk.init40(base_url="https://master.dev.looker.com:19999")
     if dev == "True":
         sdk.update_session(body=models40.WriteApiSession(workspace_id="dev"))
 
