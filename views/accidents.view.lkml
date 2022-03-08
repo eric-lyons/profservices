@@ -2,6 +2,86 @@ view: accidents {
   sql_table_name: public.accidents ;;
   drill_fields: [id]
 
+  parameter: dashboards {
+    type: string
+    allowed_value:{ value:"United States"}
+    allowed_value:{ value:"Korea"}
+    allowed_value:{ value:"Russia"}
+
+  }
+
+  dimension: eric_test_dim {
+    sql: 1=1 ;;
+    label: "Navigation"
+    html:
+
+      {% if dashboards._parameter_value == "London" %}
+      <span style="text-align:left; background-color=grey;">
+      <button class=”button pill-shape” style="background-color:black;color:white;"><font color="red">London</font></button><br>
+      <button class=”button pill-shape”> <a href="/dashboards/946?State=&Dashboards=Paris">Paris </a></button><br>
+      <button class=”button pill-shape”> <a href="/dashboards/946?State=&Dashboards=Tokyo">Tokyo </a></button>
+      </div>
+      {% elsif dashboards._parameter_value == "Paris" %}
+      <div style="text-align:left; background-color=grey;">
+      <button class=”button pill-shape”> <a href="/dashboards/946?State=&Dashboards=London"> London </a> </font></button><br>
+      <button class=”button pill-shape” style="background-color:black;color:white;"><font color="red"> Paris</button><br>
+      <button class=”button pill-shape”> <a href="/dashboards/946?State=&Dashboards=Tokyo"> Tokyo </a></button>
+      </div>
+      {% else %}
+      <div style="text-align:left; background-color=grey;">
+      <button class=”button pill-shape”> <a href="/dashboards/946?State=&Dashboards=London">London</a></font></button><br>
+      <button class=”button pill-shape”> <a href="/dashboards/946?State=&Dashboards=Paris"> Paris </a> </button><br>
+      <button class=”button pill-shape” style="background-color:black;color:white;"><font color="red"> Tokyo</button>
+      </span>
+
+      {% endif %};;
+  }
+
+  dimension: london {
+    ### SELECT this When on London Dash
+    sql: 1=1 ;;
+    label: "Navigation"
+    #hidden: yes
+    html:
+
+      <span style="text-align:left; background-color=grey;">
+      <button class=”button pill-shape” style="background-color:black;color:white;"> <font color="red"> London</font></button>
+      <button class=”button pill-shape”> <a href="/dashboards-next/5490">Paris </a></button>
+      <button class=”button pill-shape”> <a href="/dashboards-next/5488">Tokyo </a></button>
+
+      </span>;;
+  }
+
+  dimension: Paris {
+    ### SELECT this When on Paris Dash
+    sql: 1=1 ;;
+    label: "Navigation"
+    #hidden: yes
+    html:
+      <span style="text-align:left; background-color=grey;">
+      <button class=”button pill-shape”> <a href="dashboards-next/5489"> London </a> </button>
+      <button class=”button pill-shape” style="background-color:black;color:white;"> <font color="red"> <a href="/dashboards-next/5490">Paris</a> </font> </button>
+      <button class=”button pill-shape”> <a href="/dashboards-next/5488">Tokyo </a></button>
+
+      </span>;;
+  }
+
+  dimension: Tokyo {
+    ### SELECT this When on Paris Dash
+    sql: 1=1 ;;
+    label: "Navigation"
+    #hidden: yes
+    html:
+
+      <span style="text-align:left; background-color=grey;">
+      <button class=”button pill-shape” ><a href="dashboards-next/5489"> London </a></button>
+      <button class=”button pill-shape”> <a href="/dashboards-next/5490">Paris </a></button>
+      <button class=”button pill-shape” style="background-color:black;color:white;"><font color="red"> <a href="/dashboards-next/5488">Tokyo </font></a></button>
+
+      </span>;;
+  }
+
+
   dimension: id {
     primary_key: yes
     type: number
@@ -51,6 +131,7 @@ view: accidents {
 
   dimension: country {
     type: string
+    label: "sum_of_bogus_1額"
     map_layer_name: countries
     sql: ${TABLE}.country ;;
   }
