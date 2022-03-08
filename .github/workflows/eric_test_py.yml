@@ -6,7 +6,9 @@ name: Python application
 on:
   pull_request:
     types: [opened]
-    branches: [ main ]
+    branches:  
+      -main
+      -master
 
 jobs:
   build:
