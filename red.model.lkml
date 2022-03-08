@@ -19,3 +19,5 @@ explore: dt_a {
     sql_on: ${dt_c.row} = ${dt_d.row} ;;
   }
 }
+
+explore: flights {}
