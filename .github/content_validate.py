@@ -34,10 +34,7 @@ def main():
 
 def get_base_url():
     """ Pull base url from looker.ini, remove port"""
-    config = configparser.ConfigParser()
-    config.read(config_file)
-    full_base_url = config.get("Looker", "base_url")
-    base_url = sdk.auth.settings.base_url[: full_base_url.index(":19999")]
+    base_url = "https://master.dev.looker.com:19999"
     return base_url
 
 
