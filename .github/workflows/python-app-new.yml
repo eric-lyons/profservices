@@ -31,6 +31,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: run script
       run: |
-        echo "${{ github.head_ref }}"
+        cd .github
+        echo ${{ github.head_ref }}
         python validate.py --project_name eric_the_redshift --dev True --branch ${{ github.head_ref }} 
  
