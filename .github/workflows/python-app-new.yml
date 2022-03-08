@@ -35,5 +35,5 @@ jobs:
       run: |
         cd .github
         echo ${{ github.head_ref }}
-        python validate.py --project_name eric_the_redshift --dev True
+        python content_validate.py
  
