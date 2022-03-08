@@ -4,8 +4,7 @@ import configparser
 import hashlib
 import csv
 
-config_file = "../../looker.ini"
-sdk = looker_sdk.init31(config_file)
+sdk = looker_sdk.init31()
 
 
 def main():
