@@ -11,7 +11,7 @@ GROUP BY
        ;;
   }
 
-
+#g
   dimension: accidents_air_carrier {
     type: string
     primary_key: yes
