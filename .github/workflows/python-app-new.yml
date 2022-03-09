@@ -26,10 +26,10 @@ jobs:
         pip install pandas
         pip install argparse
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Set output
-      run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
-    - name: Check output
-      run: echo ${{ steps.vars.outputs.short_ref }}
+    # extract branch name on pull request
+    - name: Print branch name
+      if: github.event_name == 'pull_request'
+      run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_HEAD_REF})"
     - name: run script
       env:
         LOOKERSDK_API_VERSION: ${{ secrets.LOOKERSDK_API_VERSION }}
