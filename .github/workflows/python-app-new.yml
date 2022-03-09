@@ -21,7 +21,6 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies
       run: |
-        echo LOOKERSDK_BASE_URL
         python -m pip install --upgrade pip
         pip install looker_sdk
         pip install pandas
@@ -35,7 +34,7 @@ jobs:
         LOOKERSDK_CLIENT_SECRET: ${{ secrets.LOOKERSDK_CLIENT_SECRET }}
       run: |
         cd .github
-        echo "${{ github.head_ref }}"
-        echo "${{ github.event.push.ref }}"
+        echo ${{ github.head_ref }}
+        echo ${{ github.event.push.ref }}
         #python validate.py --project eric_the_redshift --dev True --branch how_does_this_look
  
