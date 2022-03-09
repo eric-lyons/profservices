@@ -27,7 +27,7 @@ jobs:
         pip install argparse
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     # extract branch name on pull request
-    - name: run script
+    - name: run validator
       env:
         LOOKERSDK_API_VERSION: ${{ secrets.LOOKERSDK_API_VERSION }}
         LOOKERSDK_BASE_URL: ${{ secrets.LOOKERSDK_BASE_URL }}
