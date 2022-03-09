@@ -26,6 +26,10 @@ jobs:
         pip install pandas
         pip install argparse
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Set output
+      run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+    - name: Check output
+      run: echo ${{ steps.vars.outputs.short_ref }}
     - name: run script
       env:
         LOOKERSDK_API_VERSION: ${{ secrets.LOOKERSDK_API_VERSION }}
