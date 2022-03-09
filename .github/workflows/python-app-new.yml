@@ -35,6 +35,7 @@ jobs:
         LOOKERSDK_CLIENT_SECRET: ${{ secrets.LOOKERSDK_CLIENT_SECRET }}
       run: |
         cd .github
-        echo ${{ github.head_ref }}
-        python validate.py --project eric_the_redshift --dev True --branch how_does_this_look
+        echo "${{ github.head_ref }}"
+        echo "${{ github.event.push.ref }}"
+        #python validate.py --project eric_the_redshift --dev True --branch how_does_this_look
  
