@@ -26,6 +26,8 @@ def main():
         base_url, get_broken_content(), space_data
     )
     new_broken_content = compare_broken_content(broken_content_prod, broken_content_dev)
+    broken = len(new_broken_content)
+    assert new_broken_content = 0
     if new_broken_content:
         write_broken_content_to_file(new_broken_content, "new_broken_content.csv")
     else:
@@ -47,7 +49,7 @@ def get_space_data():
 def get_broken_content():
     """Collect broken content"""
     broken_content = sdk.content_validation(
-        transport_options={"timeout": 600}
+        transport_options={"timeout": 6000}
     ).content_with_errors
     return broken_content
 
