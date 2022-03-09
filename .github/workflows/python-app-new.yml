@@ -37,5 +37,5 @@ jobs:
         cd .github
         echo ${{ github.head_ref }}
         echo ${{ github.event.push.ref }}
-        python validate.py --project eric_the_redshift --dev True --branch how_does_this_look --branch ${{ github.head_ref }}
+        python validate.py --project eric_the_redshift --dev True --branch ${{ github.head_ref }}
  
