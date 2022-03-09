@@ -26,7 +26,7 @@ def initialize(dev):
     RETURNS: SDK session/token
     """
 
-    sdk = looker_sdk.init40()
+    sdk = looker_sdk.init40(section="Master")
     if dev == "True":
         sdk.update_session(body=models40.WriteApiSession(workspace_id="dev"))
 
@@ -83,12 +83,20 @@ def run_validator(sdk, project, branch):
 
             df.to_csv('%s.csv' % project_name)
 
+            return df
+
         except error.SDKError:
             pass
             print("SDK ERROR, Please check project ID")
-
     else:
         print("No project arg passed, please rerun script with -p PROJECTID")
+
+
+def assert_response(df):
+    count = df.index
+    rows = len(count)
+    print(rows)
+    assert rows == 0
 
 
 def main():
@@ -112,7 +120,8 @@ def main():
     dev = args.dev
     branch = args.branch
     sdk = initialize(dev)
-    run_validator(sdk, project, branch)
+    df = run_validator(sdk, project, branch)
+    assert_response(df)
 
 
 main()
