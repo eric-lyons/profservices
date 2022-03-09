@@ -27,9 +27,6 @@ jobs:
         pip install argparse
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     # extract branch name on pull request
-    - name: Print branch name
-      if: github.event_name == 'pull_request'
-      run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_HEAD_REF})"
     - name: run script
       env:
         LOOKERSDK_API_VERSION: ${{ secrets.LOOKERSDK_API_VERSION }}
@@ -40,5 +37,5 @@ jobs:
         cd .github
         echo ${{ github.head_ref }}
         echo ${{ github.event.push.ref }}
-        #python validate.py --project eric_the_redshift --dev True --branch how_does_this_look
+        #python validate.py --project eric_the_redshift --dev True --branch how_does_this_look --branch ${{ github.head_ref }}
  
