@@ -96,6 +96,7 @@ def assert_response(df):
     count = df.index
     rows = len(count)
     print(rows)
+    print(df)
     assert rows == 0
 
 
