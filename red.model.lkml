@@ -3,6 +3,7 @@ connection: "faa_redshift"
 include: "/views/*.view.lkml"
 explpore:
 #new
+# new merge
 # include all views in the views/ folder in this project
 
 explore: dt_a {
