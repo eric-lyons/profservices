@@ -24,5 +24,19 @@ explore: dt_a {
     sql_on: ${dt_c.row} = ${dt_d.row} ;;
   }
 }
+#test
+
+test: is_accurate {
+  explore_source: flights {
+    column: total_revenue {
+      field: flights.count
+    }
+    filters: [flights.arr_year: "2017"]
+  }
+  assert: os_expected_value {
+    expression: ${flights.count} = 0 ;;
+  }
+}
+
 
 explore: flights {}
