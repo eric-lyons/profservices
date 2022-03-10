@@ -25,6 +25,8 @@ jobs:
         pip install looker_sdk
         pip install pandas
         pip install argparse
+        pip install hashlib
+        pip install configparser
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     # extract branch name on pull request
     - name: run LookML validator
