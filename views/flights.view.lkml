@@ -22,7 +22,7 @@ view: flights {
   }
 
   dimension: cancelled {
-    label: "{{ _user_attributes['my_cat'] }}"
+    label:""
     type: string
     sql: ${TABLE}.cancelled ;;
   }
