@@ -48,5 +48,5 @@ jobs:
         LOOKERSDK_CLIENT_SECRET: ${{ secrets.LOOKERSDK_CLIENT_SECRET }}
       run: |
         cd .github
-        python content_validate.py --project eric_the_redshift --branch ${{ github.head_ref }}
+        # python content_validate.py --project eric_the_redshift --branch ${{ github.head_ref }}
  
