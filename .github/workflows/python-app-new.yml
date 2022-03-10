@@ -26,8 +26,6 @@ jobs:
         pip install pandas
         pip install argparse
         pip install configparser
-        pip install python-dev
-        pip install hashlib
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     # extract branch name on pull request
     - name: run LookML validator
@@ -41,4 +39,5 @@ jobs:
         echo ${{ github.head_ref }}
         echo ${{ github.event.push.ref }}
         python validate.py --project eric_the_redshift --dev True --branch ${{ github.head_ref }}
+        python content_validate.py --project eric_the_redshift --branch ${{ github.head_ref }}
  
