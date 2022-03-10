@@ -12,13 +12,10 @@ __________      .__  .__    __________                                     __  .
 ## Issue ticket number and link
 
 ## Checklist before requesting a review
-- [ ] I have performed a self-review of my code
-- [ ] I adhered to DRY code practices.
+- [ ] I used DRY code practices.
 - [ ] I added internal comments and labels for any new changes/features.
-- [ ] If it is a core feature, I have added thorough tests.
+- [ ] If it is a core feature, I have added tests.
 - [ ] I updated internal documentation for this feature.
-- [ ] I have tested the end-user facing content with this feature change.
+- [ ] I have confirmed there are no breaking changes.
 - [ ] I have run any Dashboard/Looks impacted by this change
-- [ ] I have built any PDTs, DTs, or Aggregate Tables imapcted by this change in Dev mode. 
-
-
+- [ ] I have built any PDTs, DTs, or Aggregate Tables impacted by this change in Dev mode. 
