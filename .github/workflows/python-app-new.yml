@@ -26,6 +26,7 @@ jobs:
         pip install pandas
         pip install argparse
         pip install configparser
+        pip install hashlib
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     # extract branch name on pull request
     - name: run LookML validator
