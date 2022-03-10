@@ -1,10 +1,12 @@
+"""Runs Content Validator."""
 import looker_sdk
 from looker_sdk import models
 import configparser
 import hashlib
+import argparse
 import csv
 
-sdk = looker_sdk.init31()
+sdk = looker_sdk.init31(section="Prof")
 
 
 def main():
@@ -14,29 +16,39 @@ def main():
     outputted to a csv file.
     Use this script to test whether LookML changes
     will result in new broken content."""
+
+    parser = argparse.ArgumentParser(description='Run content validator')
+    parser.add_argument('--branch', '-b', type=str,
+                        help='Name of branch you want to validate. If ommited this will use prod.')
+    parser.add_argument('--project', '-p', type=str,
+                        help='name of project to validate. This arg is required.')
+    args = parser.parse_args()
+    branch = args.branch
+    project = args.project
     base_url = get_base_url()
     space_data = get_space_data()
     print("Checking for broken content in production.")
     broken_content_prod = parse_broken_content(
         base_url, get_broken_content(), space_data
     )
-    checkout_dev_branch()
+    checkout_dev_branch(branch, project)
     print("Checking for broken content in dev branch.")
     broken_content_dev = parse_broken_content(
         base_url, get_broken_content(), space_data
     )
     new_broken_content = compare_broken_content(broken_content_prod, broken_content_dev)
-    broken = len(new_broken_content)
-    assert new_broken_content = 0
     if new_broken_content:
+        print(new_broken_content)
         write_broken_content_to_file(new_broken_content, "new_broken_content.csv")
     else:
         print("No new broken content in development branch.")
+    broken = len(new_broken_content)
+    assert broken == 0
 
 
 def get_base_url():
     """ Pull base url from looker.ini, remove port"""
-    base_url = "https://master.dev.looker.com:19999"
+    base_url = "https://profservices.dev.looker.com:19999"
     return base_url
 
 
@@ -63,13 +75,18 @@ def parse_broken_content(base_url, broken_content, space_data):
         else:
             content_type = "look"
         item_content_type = getattr(item, content_type)
-        id = item_content_type.id
-        name = item_content_type.title
-        space_id = item_content_type.space.id
-        space_name = item_content_type.space.name
-        errors = item.errors
-        url = f"{base_url}/{content_type}s/{id}"
-        space_url = "{}/spaces/{}".format(base_url, space_id)
+        try:
+            id = item_content_type.id
+            name = item_content_type.title
+            space_id = item_content_type.space.id
+            space_name = item_content_type.space.name
+            errors = item.errors
+            url = f"{base_url}/{content_type}s/{id}"
+            space_url = "{}/spaces/{}".format(base_url, space_id)
+        except AttributeError:
+            print(item)
+            print("has no id...")
+            pass
         if content_type == "look":
             element = None
         else:
@@ -128,9 +145,11 @@ def compare_broken_content(broken_content_prod, broken_content_dev):
     return new_broken_content
 
 
-def checkout_dev_branch():
+def checkout_dev_branch(branch, project):
     """Enter dev workspace"""
     sdk.update_session(models.WriteApiSession(workspace_id="dev"))
+    sdk.update_git_branch(project_id=project,
+                          body=models.WriteGitBranch(name=branch))
 
 
 def write_broken_content_to_file(broken_content, output_csv_name):
@@ -147,3 +166,4 @@ def write_broken_content_to_file(broken_content, output_csv_name):
 
 
 main()
+
