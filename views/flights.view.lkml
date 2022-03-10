@@ -71,12 +71,18 @@ view: flights {
     sql: ${TABLE}.flight_num ;;
   }
 
+
   dimension: flight_time {
     type: number
     sql: ${TABLE}.flight_time ;;
   }
 
   dimension: id2 {
+    type: number
+    sql: ${TABLE}.id2 ;;
+  }
+
+  measure: test_number_measure {
     type: number
     sql: ${TABLE}.id2 ;;
   }

@@ -21,6 +21,8 @@ view: ARRAY {
       ;;
   }
 
+  #new
+
   dimension: array {
     type: number
     sql: ${TABLE}.value ;;
