@@ -1,7 +1,6 @@
 connection: "faa_redshift"
 
 include: "/views/*.view.lkml"
-
 #breakl
 #new
 # new merge
