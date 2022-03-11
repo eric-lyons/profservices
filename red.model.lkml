@@ -1,6 +1,7 @@
 connection: "faa_redshift"
 
 include: "/views/*.view.lkml"
+explore:  {}
 #breakl
 #new
 # new merge
@@ -34,7 +35,7 @@ test: is_accurate {
     filters: [flights.arr_year: "2017"]
   }
   assert: os_expected_value {
-    expression: ${flights.count} = 0 ;;
+    expression: ${flights.count} = 1 ;;
   }
 }
 
