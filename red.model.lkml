@@ -6,7 +6,7 @@ include: "/views/*.view.lkml"
 # new merge
 #another
 # include all views in the views/ folder in this project
-
+explore:  {}
 explore: dt_a {
   join: dt_b {
     type: inner
@@ -35,7 +35,7 @@ test: is_accurate {
     filters: [flights.arr_year: "2017"]
   }
   assert: os_expected_value {
-    expression: ${flights.count} = 0 ;;
+    expression: ${flights.count} = 2 ;;
   }
 }
 #hi
