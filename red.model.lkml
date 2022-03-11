@@ -10,6 +10,7 @@ include: "/views/*.view.lkml"
 explore: dt_a {
   join: dt_b {
     type: inner
+    #new
     relationship: one_to_one
     sql_on: ${dt_a.row} = ${dt_b.row} ;;
   }
