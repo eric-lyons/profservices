@@ -6,7 +6,6 @@ include: "/views/*.view.lkml"
 # new merge
 #another
 # include all views in the views/ folder in this project
-explore:  {}
 explore: dt_a {
   join: dt_b {
     type: inner
@@ -26,7 +25,6 @@ explore: dt_a {
   }
 }
 #test
-
 test: is_accurate {
   explore_source: flights {
     column: total_revenue {
@@ -39,5 +37,14 @@ test: is_accurate {
   }
 }
 #hi
+explore: controller_dt {}
 
-explore: flights {}
+explore: flights {
+  sql_always_having:
+  {% if _user_attributes['age'] == 100 %}
+   ${count} > 10
+  {% else %}
+    21=1
+  {% endif %} ;;
+
+}

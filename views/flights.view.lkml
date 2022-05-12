@@ -82,6 +82,54 @@ view: flights {
     sql: ${TABLE}.id2 ;;
   }
 
+
+  measure: test_number_measure2 {
+    type: number
+    sql: ${TABLE}.id2 ;;
+  }
+
+
+  measure: test_number_measure3 {
+    type: number
+    sql: ${TABLE}.id2 ;;
+  }
+
+
+  measure: test_number_measure4 {
+    type: number
+    sql: ${TABLE}.id2 ;;
+  }
+
+
+  measure: test_number_measure6 {
+    type: number
+    sql: ${TABLE}.id2 ;;
+  }
+
+
+  measure: test_number_measure7 {
+    type: number
+    sql: ${TABLE}.id2 ;;
+  }
+
+
+  measure: test_number_measure8 {
+    type: number
+    sql: ${TABLE}.id2 ;;
+  }
+
+
+  measure: test_number_measure9 {
+    type: number
+    sql: ${TABLE}.id2 ;;
+  }
+
+
+  measure: test_number_measure10 {
+    type: number
+    sql: ${TABLE}.id2 ;;
+  }
+
   measure: test_number_measure {
     type: number
     sql: ${TABLE}.id2 ;;
@@ -95,6 +143,12 @@ view: flights {
   dimension: tail_num {
     type: string
     sql: ${TABLE}.tail_num ;;
+  }
+
+  measure: dummy {
+    type: number
+    sql: 1=1 ;;
+    drill_fields: [tail_num,origin,taxi_in]
   }
 
   dimension: taxi_in {
@@ -111,6 +165,8 @@ view: flights {
   dimension: taxi_out {
     type: number
     sql: ${TABLE}.taxi_out ;;
+    # link: {label: "Fake Drill" url:"{{ dummy._link }}" }
+    html: <a href="{{ dummy._link }}" target="_self"> {{value}}</a>;;
   }
 
   measure: total_distance {
