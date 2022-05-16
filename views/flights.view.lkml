@@ -2,6 +2,7 @@ view: flights {
   sql_table_name: public.flights ;;
 
   dimension: arr_delay {
+    label: "ARRIVAL DELAY"
     type: number
     sql: ${TABLE}.arr_delay ;;
   }
