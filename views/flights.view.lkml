@@ -78,6 +78,7 @@ view: flights {
   }
 
   dimension: id {
+    label: "id"
     type: number
     sql: ${TABLE}.id2 ;;
   }
