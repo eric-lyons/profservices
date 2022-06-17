@@ -23,7 +23,6 @@ view: flights {
   }
 
   dimension: cancelled {
-    #label: "{{ _user_attributes['my_cat'] }}"
     type: string
     sql: ${TABLE}.cancelled ;;
   }
@@ -78,7 +77,7 @@ view: flights {
     sql: ${TABLE}.flight_time ;;
   }
 
-  dimension: id2 {
+  dimension: id {
     type: number
     sql: ${TABLE}.id2 ;;
   }
@@ -177,6 +176,7 @@ view: flights {
 
   measure: count {
     type: count
+    label: "count"
     drill_fields: []
   }
 }

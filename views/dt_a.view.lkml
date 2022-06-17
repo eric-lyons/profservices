@@ -11,8 +11,17 @@ view: dt_a {
               UNION ALL
               SELECT NULL as 'id', 5 as 'row'
               UNION ALL
-              SELECT NULL as 'id', 6 as 'row';;
+              SELECT NULL as 'id', 6 as 'row'
+              WHERE {% condition id_filter %} dt_a.id {% endcondition %}
+              ;;
 
+    }
+
+
+    filter: id_filter {
+      type: string
+      suggest_dimension: id
+      suggest_explore: dt_a
     }
 
     measure: count {

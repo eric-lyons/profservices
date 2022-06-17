@@ -1,8 +1,10 @@
 connection: "faa_redshift"
 
 include: "/views/*.view.lkml"
+include: "/deep_cut_1/deep_cut_2/deep_cut_3/deep_cut_4/deep_cut_5/*"
 #breakl
 #new
+
 # new merge
 #another
 # include all views in the views/ folder in this project
@@ -47,4 +49,20 @@ explore: flights {
     21=1
   {% endif %} ;;
 
+}
+
+explore: extended_flights {}
+
+explore: test_dt {
+  join: flights {
+    relationship: one_to_one
+    type: left_outer
+    sql_on:
+    {% if flights.id._in_query %}
+    ${flights.id} = ${test_dt.id}
+    {% else %}
+     1=1
+    {% endif %};;
+
+  }
 }
