@@ -12,7 +12,6 @@ view: dt_a {
               SELECT NULL as 'id', 5 as 'row'
               UNION ALL
               SELECT NULL as 'id', 6 as 'row'
-              WHERE {% condition id_filter %} dt_a.id {% endcondition %}
               ;;
 
     }
